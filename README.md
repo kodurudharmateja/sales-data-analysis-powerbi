@@ -1,53 +1,44 @@
-# Sales Data Analysis Dashboard
+## Sales Data Analysis with SQL and Power BI
 
-## Overview
+### Run Locally
 
-This project focuses on analyzing sales data using SQL and Power BI to uncover business insights, revenue trends, and market performance. The objective is to transform raw transactional data into meaningful visualizations that support data-driven decision-making.
+Go to the project directory and open ``` .pbix ``` file with Microsoft Power BI Desktop
 
-## Tools & Technologies
+### Data Analysis Using SQL
 
-* SQL
-* Power BI
-* Data Analysis
-* Data Visualization
-* Business Intelligence
+1. Show all customer records
 
-## Key Objectives
+    `SELECT * FROM customers;`
 
-* Analyze sales performance across different markets.
-* Identify top-performing products and regions.
-* Track revenue trends over time.
-* Create interactive dashboards for business reporting.
+1. Show total number of customers
 
-## Analysis Performed
+    `SELECT count(*) FROM customers;`
 
-* Customer and transaction analysis
-* Revenue analysis by market
-* Product performance evaluation
-* Year-wise and month-wise sales trends
-* SQL-based business queries and data exploration
+1. Show transactions for Chennai market market code for chennai is Mark001
 
-## Dashboard Insights
+    `SELECT * FROM transactions where market_code='Mark001';`
 
-The Power BI dashboard provides:
+1. Show distrinct product codes that were sold in chennai
 
-* Revenue and profit analysis
-* Market-wise performance comparison
-* Product sales trends
-* Interactive filters for deeper exploration
-* Business KPIs for decision-making
+    `SELECT distinct product_code FROM transactions where market_code='Mark001';`
 
-## Key Learnings
+1. Show transactions where currency is US dollars
 
-* Writing SQL queries for business analysis
-* Data cleaning and transformation
-* Building interactive Power BI dashboards
-* Creating visual reports for stakeholders
-* Extracting actionable insights from sales data
+    `SELECT * from transactions where currency="USD"`
 
-## Project Status
+1. Show transactions in 2020 join by date table
 
-Completed and analyzed as part of my data analytics learning journey.
+    `SELECT transactions.*, date.* FROM transactions INNER JOIN date ON transactions.order_date=date.date where date.year=2020;`
 
+1. Show total revenue in year 2020,
 
+    `SELECT SUM(transactions.sales_amount) FROM transactions INNER JOIN date ON transactions.order_date=date.date where date.year=2020 and transactions.currency="INR\r" or transactions.currency="USD\r";`
+	
+1. Show total revenue in year 2020, January Month,
 
+    `SELECT SUM(transactions.sales_amount) FROM transactions INNER JOIN date ON transactions.order_date=date.date where date.year=2020 and and date.month_name="January" and (transactions.currency="INR\r" or transactions.currency="USD\r");`
+
+1. Show total revenue in year 2020 in Chennai
+
+    `SELECT SUM(transactions.sales_amount) FROM transactions INNER JOIN date ON transactions.order_date=date.date where date.year=2020
+and transactions.market_code="Mark001";`
