@@ -50,10 +50,4 @@ The Power BI dashboard provides:
 Completed and analyzed as part of my data analytics learning journey.
 
 
-## Dashboard Preview
 
-![Sales Dashboard](images/sales-key-insight.png)
-
-![Profit Analysis](images/sales-profit-analysis.png)
-
-![Performance Insights](images/sales-performance-insight.png)
